@@ -34,6 +34,7 @@ public class maps extends AppCompatActivity {
     private Button publishButton2;
 
     private ApiService apiService;
+    private String FAre , Distance,Lower, Upper;
 
     // Define Retrofit service interface
     public interface ApiService {
@@ -109,9 +110,25 @@ public class maps extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     try {
                         String responseData = response.body().string();
+                        Log.d("Output form server", responseData);
                         // Handle the response as needed
                         // You can update UI or navigate to another activity here
                         // Save data to Firestore
+
+                        // Parse the JSON response
+                        JSONObject jsonResponse = new JSONObject(responseData);
+                        double ogValue = jsonResponse.optDouble("og");
+                        double distanceValue = jsonResponse.optDouble("distance");
+                        double lowervalue = jsonResponse.optDouble("fare_l");
+                        double uppervalue = jsonResponse.optDouble("fare_u");
+
+
+                        // Convert values to strings
+                         FAre = String.valueOf(ogValue);
+                         Distance = String.valueOf(distanceValue);
+                         Lower =String.valueOf(lowervalue);
+                         Upper = String.valueOf(uppervalue);
+
                         saveDataToFirestore();
                         //server
                         navigateToAnotherActivity();
@@ -153,7 +170,8 @@ public class maps extends AppCompatActivity {
         rideData.put("time", getIntent().getStringExtra("time"));
         rideData.put("fare", getIntent().getStringExtra("fare"));
         rideData.put("carType", getIntent().getStringExtra("carType"));
-        rideData.put("Distance",0);
+        rideData.put("Distance",Distance);
+        rideData.put("Predicted_Fare",FAre);
 
         ridesCollection.document(uniqueCollectionName)
                 .set(rideData)

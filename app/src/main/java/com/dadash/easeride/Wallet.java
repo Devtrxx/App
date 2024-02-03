@@ -5,35 +5,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.ImageButton;
 
-public class AIsupport extends AppCompatActivity {
-    private WebView webView;
-    private ImageButton pubbtn, homebtn,wallbtn;
+public class Wallet extends AppCompatActivity {
+    private ImageButton pubbtn, aisupbtn,homebtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_aisupport);
-        // Initialize WebView
-        webView = findViewById(R.id.webView);
-
-        // Enable JavaScript (optional, depends on the website)
-        WebSettings webSettings = webView.getSettings();
-        webSettings.setJavaScriptEnabled(true);
-
-        // Load the website
-        webView.loadUrl("http://192.168.50.126:5000/");
-
-        // Set WebViewClient to handle navigation within the WebView
-        webView.setWebViewClient(new WebViewClient());
-
-
+        setContentView(R.layout.activity_wallet);
         pubbtn =findViewById(R.id.btnAdd);
+        aisupbtn =findViewById(R.id.btnChatSupport);
         homebtn =findViewById(R.id.btnAccount);
-        wallbtn =findViewById(R.id.btnWallet);
 
 
         OpenACtivity();
@@ -43,40 +25,30 @@ public class AIsupport extends AppCompatActivity {
         pubbtn.setOnClickListener(new View.OnClickListener() {
                                       @Override
                                       public void onClick(View v) {
-                                          Intent intent = new Intent(AIsupport.this, publishride.class);
+                                          Intent intent = new Intent(Wallet.this, publishride.class);
                                           startActivity(intent);
                                           finish();
                                       }
                                   }
         );
 
-        wallbtn.setOnClickListener(new View.OnClickListener() {
+        homebtn.setOnClickListener(new View.OnClickListener() {
                                        @Override
                                        public void onClick(View v) {
-                                           Intent intent = new Intent(AIsupport.this, Wallet.class);
+                                           Intent intent = new Intent(Wallet.this, Home.class);
                                            startActivity(intent);
                                            finish();
                                        }
                                    }
         );
-        homebtn.setOnClickListener(new View.OnClickListener() {
+        aisupbtn.setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View v) {
-                                            Intent intent = new Intent(AIsupport.this, Home.class);
+                                            Intent intent = new Intent(Wallet.this, AIsupport.class);
                                             startActivity(intent);
                                             finish();
                                         }
                                     }
         );
-    }
-
-    // Handle back button press to navigate within WebView history
-    @Override
-    public void onBackPressed() {
-        if (webView.canGoBack()) {
-            webView.goBack();
-        } else {
-            super.onBackPressed();
-        }
     }
 }

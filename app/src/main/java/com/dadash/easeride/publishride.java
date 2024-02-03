@@ -7,6 +7,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
@@ -20,6 +21,7 @@ public class publishride extends AppCompatActivity {
     private EditText editTextTo, editTextFrom, editTextFare;
     private Spinner spinnerCarType;
     private Button publishButton, dateButton, timeButton;
+    private ImageButton Homebtn, aisupbtn,wallbtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +35,12 @@ public class publishride extends AppCompatActivity {
         editTextFare = findViewById(R.id.editTextFare);
         spinnerCarType = findViewById(R.id.spinnerCarType);
         publishButton = findViewById(R.id.publishbutton);
+        Homebtn =findViewById(R.id.btnAccount);
+        aisupbtn =findViewById(R.id.btnChatSupport);
+        wallbtn =findViewById(R.id.btnWallet);
 
+
+        OpenACtivity();
         // Array adapter for the Spinner
         ArrayAdapter<CharSequence> carTypeAdapter = ArrayAdapter.createFromResource(
                 this,
@@ -143,5 +150,37 @@ public class publishride extends AppCompatActivity {
         );
         timePickerDialog.show();
     }
+
+    private void OpenACtivity(){
+        Homebtn.setOnClickListener(new View.OnClickListener() {
+                                       @Override
+                                       public void onClick(View v) {
+                                           Intent intent = new Intent(publishride.this, Home.class);
+                                           startActivity(intent);
+                                           finish();
+                                       }
+                                   }
+        );
+
+        wallbtn.setOnClickListener(new View.OnClickListener() {
+                                       @Override
+                                       public void onClick(View v) {
+                                           Intent intent = new Intent(publishride.this, Wallet.class);
+                                           startActivity(intent);
+                                           finish();
+                                       }
+                                   }
+        );
+        aisupbtn.setOnClickListener(new View.OnClickListener() {
+                                       @Override
+                                       public void onClick(View v) {
+                                           Intent intent = new Intent(publishride.this, AIsupport.class);
+                                           startActivity(intent);
+                                           finish();
+                                       }
+                                   }
+        );
+    }
+
 
 }
