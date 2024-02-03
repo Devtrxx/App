@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">EaseRide</string>
+    <string-array name="car_types">
+        <item>Select</item>
+        <item>Intercity</item>
+        <item>XL intercity</item>
+        <item>Sedan</item>
+    </string-array>
+</resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <!-- Trust anchors for secure connections -->
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <!-- Allow cleartext traffic for the specific domain -->
+        <domain includeSubdomains="true">192.168.50.126</domain>
+    </domain-config>
+</network-security-config>
