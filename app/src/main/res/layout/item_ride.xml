@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#DDCACA"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/toTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="To: "
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:textStyle="bold"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textto"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:layout_marginStart="10dp"
+            android:layout_toRightOf="@+id/toTextView"></TextView>
+    <TextView
+        android:id="@+id/fromTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toTextView"
+        android:text="From: "
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:textStyle="bold"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textfrom"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:layout_marginStart="10dp"
+        android:layout_below="@+id/toTextView"
+        android:layout_toRightOf="@+id/fromTextView"></TextView>
+
+    <TextView
+        android:id="@+id/dateTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fromTextView"
+        android:text="Date: "
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:textStyle="bold"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textdate"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:layout_marginStart="10dp"
+        android:layout_below="@+id/fromTextView"
+        android:layout_toRightOf="@+id/dateTextView"></TextView>
+
+    <TextView
+        android:id="@+id/timeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fromTextView"
+        android:layout_toEndOf="@id/textdate"
+        android:layout_marginStart="16dp"
+        android:text="Time: "
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:textStyle="bold"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/texttime"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:layout_marginStart="10dp"
+        android:layout_below="@+id/fromTextView"
+        android:layout_toRightOf="@+id/timeTextView"></TextView>
+
+    <TextView
+        android:id="@+id/distanceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dateTextView"
+        android:text="Distance: "
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:textStyle="bold"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textdistance"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:layout_marginStart="10dp"
+        android:layout_below="@+id/dateTextView"
+        android:layout_toRightOf="@+id/distanceTextView"></TextView>
+
+    <TextView
+        android:id="@+id/vehicleTypeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dateTextView"
+        android:layout_toEndOf="@id/textdistance"
+        android:layout_marginStart="16dp"
+        android:text="Vehicle Type: "
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:textStyle="bold"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textvehicle"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:layout_marginStart="10dp"
+        android:layout_below="@+id/timeTextView"
+        android:layout_toRightOf="@+id/vehicleTypeTextView"></TextView>
+
+    <TextView
+        android:id="@+id/fareTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/distanceTextView"
+        android:text="Fare: "
+        android:textSize="18sp"
+        android:layout_marginStart="60dp"
+        android:textColor="#000000"
+        android:textStyle="bold"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textfare"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:layout_marginStart="10dp"
+        android:layout_below="@+id/distanceTextView"
+        android:layout_toRightOf="@+id/fareTextView"></TextView>
+
+</RelativeLayout>
+

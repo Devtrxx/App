@@ -8,15 +8,55 @@
     android:layout_height="match_parent"
     tools:context=".Home">
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView3"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:backgroundTint="#B8B6B6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rides"
+            android:textSize="30dp"
+            android:layout_marginStart="20dp"
+            android:textColor="@color/black">
+        </TextView>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="330dp">
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:id="@+id/aipred"
+            android:layout_centerHorizontal="true"
+            android:layout_height="wrap_content"
+            android:background="@drawable/baseline_auto_awesome_24">
+        </ImageButton>
+            <TextView
+                android:layout_width="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="10dp"
+                android:text="Predict"
+                android:layout_below="@+id/aipred"
+                android:layout_marginTop="-8dp"
+                android:layout_centerHorizontal="true"
+                android:layout_height="wrap_content">
+            </TextView>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
     <!-- RecyclerView Section -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewRides"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/cardView2"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView3" />
 
     <!-- CardView Section -->
     <androidx.cardview.widget.CardView

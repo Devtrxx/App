@@ -16,6 +16,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import android.util.Log;
+import android.widget.TextView;
+
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.CollectionReference;
@@ -34,11 +36,14 @@ public class maps extends AppCompatActivity {
     private Button publishButton2;
 
     private ApiService apiService;
-    private String FAre , Distance,Lower, Upper;
+    private String FAre , Distance;
+     double fare   ,Lower, Upper;
+
+     private TextView rangeview;
 
     // Define Retrofit service interface
     public interface ApiService {
-        @POST("http://192.168.50.126:8000/calculate_distance")  // Replace with your actual endpoint
+        @POST("http://192.168.9.126:8000/calculate_distance")  // Replace with your actual endpoint
         Call<ResponseBody> postData(@Body RequestBody requestBody);
     }
 
@@ -63,6 +68,7 @@ public class maps extends AppCompatActivity {
         }
 
         publishButton2 = findViewById(R.id.publishbb);
+        rangeview= findViewById(R.id.rangeview);
         publishButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,7 +78,7 @@ public class maps extends AppCompatActivity {
 
         // Create Retrofit instance
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.50.126:8000/")  // Replace with your FastAPI server address
+                .baseUrl("http://192.168.9.126:8000/")  // Replace with your FastAPI server address
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -126,16 +132,30 @@ public class maps extends AppCompatActivity {
                         // Convert values to strings
                          FAre = String.valueOf(ogValue);
                          Distance = String.valueOf(distanceValue);
-                         Lower =String.valueOf(lowervalue);
-                         Upper = String.valueOf(uppervalue);
+                         Log.d("output form server 2",FAre + "  +" + Distance + lowervalue);
+                         Lower = Math.round(lowervalue);
+                         Upper = Math.round(uppervalue);
 
+                         fare = Double.parseDouble(getIntent().getStringExtra("fare"));
+                         if (fare>=Lower && fare<= Upper){
                         saveDataToFirestore();
                         //server
                         navigateToAnotherActivity();
+                         }
+                         else {
+                             publishButton2.setError("");
+                             rangeview.setText("Please enter fare between "+ Lower + " and "+ Upper+".");
+                             rangeview.setVisibility(View.VISIBLE);
+                         }
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
+                } else {
+                    // Handle the case where the response is not successful
+                    Log.e("Server Response", "Error: " + response.code() + " " + response.message());
+                    // You can handle the error here, display a message, etc.
                 }
+
             }
 
             @Override
@@ -155,6 +175,7 @@ public class maps extends AppCompatActivity {
 
         // Start the other activity
         startActivity(intent);
+//        finish();
     }
 
     private void saveDataToFirestore() {
@@ -168,10 +189,10 @@ public class maps extends AppCompatActivity {
         rideData.put("from", formattedFrom);
         rideData.put("date", getIntent().getStringExtra("date"));
         rideData.put("time", getIntent().getStringExtra("time"));
-        rideData.put("fare", getIntent().getStringExtra("fare"));
-        rideData.put("carType", getIntent().getStringExtra("carType"));
-        rideData.put("Distance",Distance);
-        rideData.put("Predicted_Fare",FAre);
+        rideData.put("fare", getIntent().getStringExtra("fare")+" Rs.");
+        rideData.put("vehicleType", getIntent().getStringExtra("carType"));
+        rideData.put("distance",Distance.toString()+" KM");
+        rideData.put("Predicted_Fare",FAre.toString()+" Rs.");
 
         ridesCollection.document(uniqueCollectionName)
                 .set(rideData)

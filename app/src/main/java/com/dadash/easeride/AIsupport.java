@@ -5,10 +5,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageButton;
+import android.os.Build;
+import android.webkit.WebResourceRequest;
+
+
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class AIsupport extends AppCompatActivity {
     private WebView webView;
@@ -23,9 +30,9 @@ public class AIsupport extends AppCompatActivity {
         // Enable JavaScript (optional, depends on the website)
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
-
+        configureWebView();
         // Load the website
-        webView.loadUrl("http://192.168.50.126:5000/");
+        webView.loadUrl("http://192.168.9.126:5000/");
 
         // Set WebViewClient to handle navigation within the WebView
         webView.setWebViewClient(new WebViewClient());
@@ -79,4 +86,31 @@ public class AIsupport extends AppCompatActivity {
             super.onBackPressed();
         }
     }
+    private void configureWebView() {
+        WebSettings webSettings = webView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+
+        // Enable mixed content if your API is served over HTTP
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            webSettings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
+        }
+
+        // Set a WebViewClient to handle requests and page navigation
+        webView.setWebViewClient(new WebViewClient() {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                view.loadUrl(url);
+                return true;
+            }
+
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+            @Override
+            public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
+                // You can modify headers here if needed
+                return super.shouldInterceptRequest(view, request);
+            }
+        });
+    }
+
 }
+
