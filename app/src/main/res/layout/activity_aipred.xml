@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="#4EA32F"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".publishride">
-
+    tools:context=".AIpred">
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:backgroundTint="#FFFFFF"
@@ -104,7 +101,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
-                        android:onClick="showDatePickerDialog"
                         android:text="Date"
                         android:textColor="#FFFFFF"
                         android:textSize="18dp" />
@@ -123,7 +119,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
-                        android:onClick="showTimePickerDialog"
                         android:text="Time"
                         android:textColor="#FFFFFF"
                         android:textSize="18dp" /> <!-- Call method when clicked -->
@@ -143,6 +138,7 @@
 
             <RelativeLayout
                 android:id="@+id/r5"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/r3"
@@ -198,37 +194,30 @@
                     android:layout_toEndOf="@+id/textViewCarType"
                     android:textColor="@color/black" />
             </RelativeLayout>
-            <RelativeLayout
-                android:id="@+id/r4"
+
+            <Button
+                android:id="@+id/publishbutton"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/r6"
+                android:layout_centerInParent="false"
+                android:layout_marginStart="20dp"
+                android:text="Predict"></Button>
+            <TextView
                 android:layout_below="@+id/r6"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/predictai"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:layout_marginStart="10dp"
-                    android:layout_toRightOf="@+id/publishbutton"
-                    android:background="@color/purple_500"
-                    android:backgroundTint="@color/purple_500"
-                    android:textColor="@color/white"
-                    android:textSize="20dp"></EditText>
-
-                <Button
-                    android:id="@+id/publishbutton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:layout_marginStart="20dp"
-                    android:text="Predict"></Button>
-            </RelativeLayout>
-
+                android:layout_toRightOf="@id/publishbutton"
+                android:id="@+id/predictedoutput"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="8dp"
+                android:textColor="#2D9E04"
+                android:textSize="18dp" />
 
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -279,5 +268,6 @@
 
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

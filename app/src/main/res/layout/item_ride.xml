@@ -129,7 +129,7 @@
         android:layout_below="@id/distanceTextView"
         android:text="Fare: "
         android:textSize="18sp"
-        android:layout_marginStart="60dp"
+        android:layout_marginStart="0dp"
         android:textColor="#000000"
         android:textStyle="bold"/>
     <TextView
@@ -141,6 +141,14 @@
         android:layout_marginStart="10dp"
         android:layout_below="@+id/distanceTextView"
         android:layout_toRightOf="@+id/fareTextView"></TextView>
+    <Button
+        android:id="@+id/bookridebtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Book Ride"
+        android:layout_marginTop="4dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/textfare"></Button>
 
 </RelativeLayout>
 
