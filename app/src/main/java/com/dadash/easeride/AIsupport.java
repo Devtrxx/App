@@ -32,7 +32,7 @@ public class AIsupport extends AppCompatActivity {
         webSettings.setJavaScriptEnabled(true);
         configureWebView();
         // Load the website
-        webView.loadUrl("http://192.168.9.126:5000/");
+        webView.loadUrl("http://192.168.9.126:3000/pages");
 
         // Set WebViewClient to handle navigation within the WebView
         webView.setWebViewClient(new WebViewClient());
