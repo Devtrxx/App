@@ -1,4 +1,4 @@
-# CarPooler: Revolutionizing Carpooling with Advanced Features
+# EaseRide: Revolutionizing Carpooling with Advanced Features
 
 ## Overview
 CarPooler is a cutting-edge software platform designed to revolutionize the carpooling experience by integrating advanced features into a user-friendly interface. Building upon the foundation of traditional carpooling services like BlaBlaCar, CarPooler offers a comprehensive solution that combines essential functionalities with innovative tools for navigation, real-time ride availability prediction, and seamless communication between users.
